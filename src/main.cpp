@@ -1,11 +1,10 @@
-#include <iostream>
-
 #include "Core/Window.h"
 
 using namespace Ila;
 
 int main()
 {
-    Window window(800, 600, "Awesome Window!");
+    ILA_CORE_LOG("STARTUP", "INFO", "ila is starting up");
+    auto window = Window::Create();
     return 0;
 }

@@ -47,17 +47,20 @@ file (
 	GLOB_RECURSE SRCS
 	${ila_SOURCE_DIR}/src/*.cpp
 )
+	
+add_executable (ila ${HDRS} ${SRCS})
 
-include_directories (
-	${ila_CMAKE_DIR}/src
-	${ila_CMAKE_DIR}/src/Core
+target_include_directories (
+	ila PRIVATE
+	${ila_SOURCE_DIR}/src
+	${ila_SOURCE_DIR}/src/Core
+	${ila_SOURCE_DIR}/src/Platform
 	${OPENGL_INCLUDE_DIRS}
 	${GLEW_INCLUDE_DIRS}
 	${SDL2_INCLUDE_DIRS}
 )
 	
 	
-add_executable (ila ${HDRS} ${SRCS})
 	
 target_link_libraries (
 	ila
@@ -78,5 +81,18 @@ if(MSVC_IDE)
 	)
 
 	source_group("Source Files\\Core" FILES ${CORE_HDRS} ${CORE_SRCS})
+
+	file (
+		GLOB_RECURSE PLATFORM_HDRS 
+		${ila_SOURCE_DIR}/src/Platform/*.h
+	)
+
+	file (
+		GLOB_RECURSE PLATFORM_SRCS
+		${ila_SOURCE_DIR}/src/Platform/*.cpp
+	)
+
+	source_group("Source Files\\Platform" FILES ${PLATFORM_HDRS} ${PLATFORM_SRCS})
+
 	set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ila)
 endif()
