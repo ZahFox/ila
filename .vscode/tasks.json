@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "windows": {
+    "options": {
+      "shell": {
+        "executable": "cmd.exe",
+        "args": ["/d", "/c"]
+      }
+    }
+  },
+  "tasks": [
+    {
+      "label": "run",
+      "type": "shell",
+      "command": "${workspaceRoot}/scripts/run.sh",
+      "windows": {
+        "command": "${workspaceRoot}\\scripts\\run.bat"
+      },
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": {
+        "reveal": "always",
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    }
+  ]
+}

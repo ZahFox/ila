@@ -15,3 +15,4 @@ COPY %VENDOR_DIR%\_bin\ Debug
 COPY %VENDOR_DIR%\_bin\ Release
 
 POPD
+PAUSE

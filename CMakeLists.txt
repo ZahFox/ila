@@ -1,9 +1,9 @@
 cmake_minimum_required (VERSION 3.12)
 set (CMAKE_CXX_STANDARD 17)
 
-project (ila)
 
 if(MSVC)
+	set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 	add_definitions(
 		-c
 		-W4
@@ -14,6 +14,8 @@ else()
 		-Wall
 	)
 endif()
+
+project (ila)
 
 if ( CMAKE_BUILD_TYPE STREQUAL "" )
 	set (
@@ -38,17 +40,17 @@ include (${ila_CMAKE_DIR}/FindSDL2.cmake)
 
 file (
 	GLOB_RECURSE HDRS 
-	${ila_SOURCE_DIR}/src/*.hpp
-  ${ila_SOURCE_DIR}/src/*.h
+	${ila_SOURCE_DIR}/src/*.h
 )
 
 file (
-  GLOB_RECURSE SRCS
-  ${ila_SOURCE_DIR}/src/*.cpp
-  ${ila_SOURCE_DIR}/src/*.c
+	GLOB_RECURSE SRCS
+	${ila_SOURCE_DIR}/src/*.cpp
 )
 
 include_directories (
+	${ila_CMAKE_DIR}/src
+	${ila_CMAKE_DIR}/src/Core
 	${OPENGL_INCLUDE_DIRS}
 	${GLEW_INCLUDE_DIRS}
 	${SDL2_INCLUDE_DIRS}
@@ -65,5 +67,16 @@ target_link_libraries (
 )
 
 if(MSVC_IDE)
+	file (
+		GLOB_RECURSE CORE_HDRS 
+		${ila_SOURCE_DIR}/src/Core/*.h
+	)
+
+	file (
+		GLOB_RECURSE CORE_SRCS
+		${ila_SOURCE_DIR}/src/Core/*.cpp
+	)
+
+	source_group("Source Files\\Core" FILES ${CORE_HDRS} ${CORE_SRCS})
 	set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ila)
 endif()
