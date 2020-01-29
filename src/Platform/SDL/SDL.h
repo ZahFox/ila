@@ -10,5 +10,7 @@ public:
     virtual ~SDLWindow();
 
     void OnUpdate() override;
+
+    bool IsRunning() override;
 };
 }

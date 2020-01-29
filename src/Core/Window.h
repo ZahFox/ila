@@ -25,6 +25,7 @@ public:
     virtual ~Window() = default;
 
     virtual void OnUpdate() = 0;
+    virtual bool IsRunning() = 0;
 
     static Scope<Window> Create(const WindowProps& props = WindowProps());
 
