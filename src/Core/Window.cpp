@@ -2,6 +2,8 @@
 
 #include <SDL2/SDL.h>
 
+namespace Ila {
+
 static SDL_Window* window = nullptr;
 
 Window::Window(int width, int height, const std::string& title)
@@ -25,4 +27,5 @@ Window::~Window()
         SDL_DestroyWindow(window);
     }
     SDL_Quit();
+}
 }
