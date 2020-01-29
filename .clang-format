@@ -1,0 +1,7 @@
+---
+Language:        Cpp
+BasedOnStyle:  Webkit
+DerivePointerAlignment: false
+PointerAlignment: Left
+...
+
