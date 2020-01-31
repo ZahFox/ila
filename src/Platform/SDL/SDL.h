@@ -12,5 +12,8 @@ public:
     void OnUpdate() override;
 
     bool IsRunning() override;
+
+private:
+    void Shutdown();
 };
 }

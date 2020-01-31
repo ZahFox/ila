@@ -11,5 +11,6 @@ int main()
         window->OnUpdate();
     }
 
+    ILA_CORE_LOG("SHUTDOWN", "INFO", "ila is shutting down");
     return 0;
 }
